@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="com.ricky.inventaris.Utils" />
+
+        <variable
+            name="vm"
+            type="com.ricky.inventaris.activity.laporanstock.ListLaporanStockViewModel" />
+    </data>
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/root_clickable"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="4dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:background="?selectableItemBackground"
+        android:clickable="true"
+        android:focusable="true">
+
+        <TextView
+            android:id="@+id/label_nama_barang"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:text="@{Utils.fromHTML(String.format(@string/kode_nama_barang, vm.laporan.kode_barang, vm.laporan.nama_barang))}"
+            android:textColor="@android:color/black"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/label_ket"
+            tools:text="1101 - Item Barang" />
+
+        <TextView
+            android:id="@+id/label_jumlah"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_weight=".1"
+            android:gravity="center"
+            android:text="@{Utils.fromHTML(String.format(@string/jumlah_barang, vm.laporan.jumlah))}"
+            android:textColor="@android:color/black"
+            android:textSize="18sp"
+            app:layout_constraintStart_toStartOf="@+id/label_nama_barang"
+            app:layout_constraintTop_toBottomOf="@+id/label_nama_barang"
+            tools:text="Jumlah 10" />
+
+        <TextView
+            android:id="@+id/label_satuan"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginBottom="8dp"
+            android:layout_weight=".1"
+            android:gravity="center"
+            android:text="@{Utils.fromHTML(String.format(@string/satuan_barang, vm.laporan.satuan))}"
+            android:textColor="@android:color/black"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/label_nama_barang"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toEndOf="@+id/label_jumlah"
+            app:layout_constraintTop_toTopOf="@+id/label_jumlah"
+            tools:text="Satuan Pcs" />
+
+        <TextView
+            android:id="@+id/label_tgl"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:text="@{(vm.laporan.c_TYPE == 1 ? `Diterima pada ` : `Dikirim pada `) + Utils.formatDate(vm.laporan.tgl_laporan, `dd MMMM yyyy HH:mm:ss`)}"
+            tools:text="26-11- 2018 11:09:28"
+            android:textColor="@color/colorPrimary"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toBottomOf="@+id/imageView"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/imageView"
+            app:layout_constraintTop_toTopOf="@+id/imageView" />
+
+        <TextView
+            android:id="@+id/label_supplier"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:text="@{(vm.laporan.c_TYPE == 1 ? `Supplier ` : `Mandor `) + vm.laporan.supplier}"
+            tools:text="Supplier PT Pharma Indonesia"
+            android:textColor="@android:color/black"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="@+id/label_tgl"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/imageView"
+            app:layout_constraintTop_toBottomOf="@+id/imageView" />
+
+        <EditText
+            android:id="@+id/label_ket"
+            android:layout_width="0dp"
+            android:layout_height="34dp"
+            android:layout_marginTop="5dp"
+            android:background="@android:color/darker_gray"
+            android:gravity="top"
+            android:maxLines="2"
+            android:padding="5dp"
+            android:enabled="false"
+            android:textColor="@android:color/black"
+            android:text="@{`Ket: `+(vm.laporan.keterangan != null ? vm.laporan.keterangan : `-`)}"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="@+id/label_supplier"
+            app:layout_constraintStart_toStartOf="@+id/label_supplier"
+            app:layout_constraintTop_toBottomOf="@+id/label_supplier"
+            tools:text="Ket: Kerusakan 1 Barang" />
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="60dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:cropToPadding="true"
+            android:scaleType="fitXY"
+            android:tint="@{vm.laporan.c_TYPE == 1 ? @color/color_in : @color/color_out}"
+            android:scaleX="@{vm.laporan.c_TYPE}"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_in" />
+
+    </android.support.constraint.ConstraintLayout>
+</layout>

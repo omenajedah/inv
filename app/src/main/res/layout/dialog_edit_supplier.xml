@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="vm"
+            type="com.ricky.inventaris.activity.supplier.DialogEditSupplierViewModel" />
+    </data>
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/root_kode_supplier"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/kode_supplier"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:enabled="false"
+                android:text="@{vm.supplier.kode_supplier}"
+                android:afterTextChanged="@{vm::afterKodeChanged}"
+                android:hint="Kode Supplier" />
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/root_nama_supplier"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/root_kode_supplier">
+
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/nama_supplier"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@{vm.supplier.nama_supplier}"
+                android:afterTextChanged="@{vm::afterNamaChanged}"
+                android:hint="Nama Supplier" />
+        </android.support.design.widget.TextInputLayout>
+
+        <Switch
+            android:id="@+id/switch1"
+            android:layout_width="wrap_content"
+            android:layout_height="26dp"
+            android:layout_marginTop="8dp"
+            android:switchPadding="10dp"
+            android:text="Status"
+            android:textOff="NonAktif"
+            android:textOn="Aktif"
+            android:checked="@{vm.supplier.status_supplier}"
+            android:onCheckedChanged="@{vm::afterStatusChanged}"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="@+id/root_nama_supplier"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/root_nama_supplier"
+            app:layout_constraintTop_toBottomOf="@+id/root_nama_supplier"
+            tools:checked="true" />
+
+        <Button
+            android:id="@+id/batal_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="8dp"
+            android:text="Batal"
+            android:onClick="@{vm::onBatalClick}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/switch1"
+            app:layout_constraintTop_toBottomOf="@+id/switch1"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <Button
+            android:id="@+id/delete_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="Hapus"
+            android:visibility="@{vm.showDelete ? View.VISIBLE : View.GONE}"
+            android:onClick="@{vm::onDelete}"
+            app:layout_constraintBottom_toBottomOf="@+id/batal_btn"
+            app:layout_constraintStart_toEndOf="@+id/batal_btn"
+            app:layout_constraintTop_toTopOf="@+id/batal_btn" />
+
+        <Button
+            android:id="@+id/button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:onClick="@{vm::onSimpanClick}"
+            android:text="Simpan Perubahan"
+            app:layout_constraintBottom_toBottomOf="@+id/delete_btn"
+            app:layout_constraintEnd_toEndOf="@+id/root_nama_supplier"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toEndOf="@+id/delete_btn"
+            app:layout_constraintTop_toTopOf="@+id/delete_btn" />
+
+    </android.support.constraint.ConstraintLayout>
+</layout>

@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="vm"
+            type="com.ricky.inventaris.activity.home.HomeViewModel" />
+    </data>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <android.support.v7.widget.CardView
+                android:id="@+id/cardView"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="8dp"
+                app:cardCornerRadius="2dp"
+                app:cardUseCompatPadding="true"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <TextView
+                    android:id="@+id/welcome_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="5dp"
+                    android:text="@{vm.fullname}"
+                    android:textColor="@android:color/black"
+                    android:textSize="16dp"
+                    tools:text="Selamat Datang, Admin." />
+            </android.support.v7.widget.CardView>
+
+            <Button
+                android:id="@+id/supplier_btn"
+                android:layout_width="0dp"
+                android:layout_height="60dp"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="32dp"
+                android:onClick="@{(v)->vm.onSupplierClick()}"
+                android:text="Supplier / Mandor"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/cardView" />
+
+
+            <Button
+                android:id="@+id/barang_masuk_btn"
+                android:layout_width="0dp"
+                android:layout_height="60dp"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="32dp"
+                android:onClick="@{(v)->vm.onBarangMasukClick()}"
+                android:text="Barang Masuk"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/supplier_btn" />
+
+            <Button
+                android:id="@+id/barang_keluar_btn"
+                android:layout_width="0dp"
+                android:layout_height="60dp"
+                android:layout_marginTop="16dp"
+                android:onClick="@{(v)->vm.onBarangKeluarClick()}"
+                android:text="Barang Keluar"
+                app:layout_constraintEnd_toEndOf="@+id/barang_masuk_btn"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="@+id/barang_masuk_btn"
+                app:layout_constraintTop_toBottomOf="@+id/barang_masuk_btn" />
+
+            <Button
+                android:id="@+id/stok_barang_btn"
+                android:layout_width="0dp"
+                android:layout_height="60dp"
+                android:layout_marginTop="16dp"
+                android:onClick="@{(v)->vm.onStokClick()}"
+                android:text="Stok Barang"
+                app:layout_constraintEnd_toEndOf="@+id/barang_keluar_btn"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/barang_keluar_btn"
+                app:layout_constraintTop_toBottomOf="@+id/barang_keluar_btn" />
+
+            <Button
+                android:id="@+id/laporan_barang_btn"
+                android:layout_width="0dp"
+                android:layout_height="60dp"
+                android:layout_marginTop="16dp"
+                android:onClick="@{(v)->vm.onLaporanClick()}"
+                android:text="Laporan Stok Barang"
+                app:layout_constraintEnd_toEndOf="@+id/stok_barang_btn"
+                app:layout_constraintStart_toStartOf="@+id/stok_barang_btn"
+                app:layout_constraintTop_toBottomOf="@+id/stok_barang_btn" />
+
+            <Button
+                android:id="@+id/logout_btn"
+                android:layout_width="0dp"
+                android:layout_height="60dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="8dp"
+                android:onClick="@{(v)->vm.onLogoutClick()}"
+                android:text="Logout"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/laporan_barang_btn"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/laporan_barang_btn"
+                app:layout_constraintTop_toBottomOf="@+id/laporan_barang_btn"
+                app:layout_constraintVertical_bias="0.0" />
+        </android.support.constraint.ConstraintLayout>
+    </ScrollView>
+</layout>

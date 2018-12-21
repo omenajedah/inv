@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/menu_search"
+        android:icon="@drawable/ic_search_black_24dp"
+        android:title="Search"
+        app:actionViewClass="android.support.v7.widget.SearchView"
+        app:showAsAction="collapseActionView|ifRoom" />
+    <item
+        android:id="@+id/order_by"
+        android:title="Atur Berdasarkan"
+        app:showAsAction="never">
+        <menu>
+            <item
+                android:id="@+id/kode_barang"
+                android:title="Kode Produk" />
+            <item
+                android:id="@+id/nama_barang"
+                android:title="Nama Produk" />
+            <item
+                android:id="@+id/waktu"
+                android:title="Waktu" />
+            <item
+                android:id="@+id/nama_supplier"
+                android:title="Nama Supplier" />
+            <item
+                android:id="@+id/barang_masuk"
+                android:title="Barang Masuk" />
+            <item
+                android:id="@+id/barang_keluar"
+                android:title="Barang Keluar" />
+        </menu>
+    </item>
+</menu>

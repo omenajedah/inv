@@ -1,0 +1,54 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.ricky.inventaris">
+
+    <application
+        android:name=".MyApplication"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme" >
+        <activity android:name=".activity.login.LoginActivity"
+            android:launchMode="singleTop">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+
+        <activity android:name=".activity.register.RegisterActivity"
+            android:label="Register"
+            android:launchMode="singleTop"/>
+
+        <activity android:name=".activity.home.HomeActivity"
+            android:label="Home"
+            android:launchMode="singleTop"/>
+
+        <activity
+            android:name=".activity.barangmasuk.BarangMasukActivity"
+            android:label="Barang Masuk"
+            android:launchMode="singleTop"/>
+
+        <activity
+            android:name=".activity.barangkeluar.BarangKeluarActivity"
+            android:label="Barang Keluar"
+            android:launchMode="singleTop"/>
+
+        <activity android:name=".activity.stock.StockActivity"
+            android:label="Stock"
+            android:launchMode="singleTop"/>
+
+        <activity android:name=".activity.laporanstock.LaporanStockActivity"
+            android:label="Laporan"
+            android:launchMode="singleTop"/>
+
+        <activity android:name=".activity.laporandetail.LaporanDetailActivity"
+            android:label="Laporan Detail"
+            android:launchMode="singleTop"/>
+
+        <activity android:name=".activity.supplier.SupplierActivity"
+            android:label="Supplier"
+            android:launchMode="singleTop"/>
+    </application>
+</manifest>

@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">Inventaris</string>
+    <string name="kode_nama_barang"><![CDATA[<font color="#00574B">%s</font>]]> - %s</string>
+    <string name="jumlah_barang">Jumlah <![CDATA[<font color="#008577">%s</font>]]></string>
+    <string name="satuan_barang">Satuan <![CDATA[<font color="#008577">%s</font>]]></string>
+    <string name="kode_supplier">Kode Supplier <![CDATA[<font color="#008577">%s</font>]]></string>
+    <string name="kode_mandor">Kode Mandor <![CDATA[<font color="#008577">%s</font>]]></string>
+    <string name="nama_supplier">Nama Supplier <![CDATA[<font color="#00574B">%s</font>]]></string>
+    <string name="nama_mandor">Nama Mandor <![CDATA[<font color="#00574B">%s</font>]]></string>
+
+
+
+    <string name="status_aktif">Status <![CDATA[<font color="#64dd17">Aktif</font>]]></string>
+    <string name="status_nonaktif">Status <![CDATA[<font color="#ff1744">Tidak Aktif</font>]]></string>
+
+    <string name="hint_search_barang">Cari Barang</string>
+</resources>

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="data_choice_supplier_mandor">
+        <item>Supplier</item>
+        <item>Mandor</item>
+    </string-array>
+</resources>

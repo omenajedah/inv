@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <import type="com.ricky.inventaris.Utils"/>
+        <variable
+            name="vm"
+            type="com.ricky.inventaris.activity.supplier.ListSupplierViewModel" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@android:color/white">
+
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        android:focusable="true"
+        android:background="?selectableItemBackground"
+        android:onClick="@{vm::onClick}">
+
+        <TextView
+            android:id="@+id/status_supplier"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:textColor="@android:color/black"
+            android:textSize="18sp"
+            android:text="@{vm.supplier.status_supplier ? Utils.fromHTML(@string/status_aktif) : Utils.fromHTML(@string/status_nonaktif)}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toEndOf="@+id/nama_supplier"
+            app:layout_constraintTop_toTopOf="@+id/nama_supplier"
+            tools:text="Status Supplier" />
+
+        <TextView
+            android:id="@+id/nama_supplier"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:textColor="@android:color/black"
+            android:textSize="18sp"
+            android:text="@{Utils.fromHTML(String.format(@string/nama_mandor, vm.supplier.nama_supplier))}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/kode_supplier"
+            app:layout_constraintVertical_bias="0.0"
+            tools:text="Nama Supplier" />
+
+        <TextView
+            android:id="@+id/kode_supplier"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:text="@{Utils.fromHTML(String.format(@string/kode_mandor, vm.supplier.kode_supplier))}"
+            android:textColor="@android:color/black"
+            android:textSize="16sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Kode Supplier" />
+    </android.support.constraint.ConstraintLayout>
+    </LinearLayout>
+
+</layout>
